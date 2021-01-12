@@ -12,7 +12,7 @@ public class MainUI {
 
         Scanner scr = new Scanner(System.in);
         while (true) {
-        System.out.println("请按相应的需求按键:");
+        System.out.println("请输入相应的数字进行操作:");
         System.out.println("按1、信息录入");
         System.out.println("按2、信息显示");
         System.out.println("按3、查询航班信息");

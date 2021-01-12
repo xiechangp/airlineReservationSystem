@@ -8,7 +8,7 @@ import java.util.Set;
 public class FlightDaoIml implements IFlightDao {//航班接口实现类
     @Override
     public void insertFight(Flight flight) {
-
+        System.out.println("数据到达了DAO层："+flight);
     }
 
     @Override
