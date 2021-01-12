@@ -5,10 +5,10 @@ import cn.edu.hcnu.dao.IFlightDao;
 
 import java.util.Set;
 
-public class ImDaoRealize implements IFlightDao {
+public class FlightDaoIml implements IFlightDao {//航班接口实现类
     @Override
     public void insertFight(Flight flight) {
-
+        System.out.println("数据到达了DAO层："+flight);
     }
 
     @Override

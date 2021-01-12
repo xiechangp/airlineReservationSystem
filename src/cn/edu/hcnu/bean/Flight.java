@@ -4,13 +4,22 @@ import java.util.Date;
 
 public class Flight {//航班
     private String id;
+    private String flightID;
     private String planeType;//飞机的类型
-    private String seatsNo;//座位号
-    private int totalSeatsNum;//座位总数量
+    private int allSeatsNum;//座位总数量
     private String departureAirport;//出发机场
     private String destinationAirport;//目的地机场
     private String departureTime;//起飞时间
    // private String detinationTime;//达到时间
+
+    public Flight(String flightID, String planeType, int allSeatsNum, String departureAirport, String destinationAirport, String departureTime) {
+        this.flightID = flightID;
+        this.planeType = planeType;
+        this.allSeatsNum = allSeatsNum;
+        this.departureAirport = departureAirport;
+        this.destinationAirport = destinationAirport;
+        this.departureTime = departureTime;
+    }
 
     public String getId() {
         return id;
@@ -18,6 +27,14 @@ public class Flight {//航班
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getFlightID() {
+        return flightID;
+    }
+
+    public void setFlightID(String flightID) {
+        this.flightID = flightID;
     }
 
     public String getPlaneType() {
@@ -28,20 +45,12 @@ public class Flight {//航班
         this.planeType = planeType;
     }
 
-    public String getSeatsNo() {
-        return seatsNo;
+    public int getAllSeatsNum() {
+        return allSeatsNum;
     }
 
-    public void setSeatsNo(String seatsNo) {
-        this.seatsNo = seatsNo;
-    }
-
-    public int getTotalSeatsNum() {
-        return totalSeatsNum;
-    }
-
-    public void setTotalSeatsNum(int totalSeatsNum) {
-        this.totalSeatsNum = totalSeatsNum;
+    public void setAllSeatsNum(int allSeatsNum) {
+        this.allSeatsNum = allSeatsNum;
     }
 
     public String getDepartureAirport() {
@@ -66,5 +75,17 @@ public class Flight {//航班
 
     public void setDepartureTime(String departureTime) {
         this.departureTime = departureTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "flightID='" + flightID + '\'' +
+                ", planeType='" + planeType + '\'' +
+                ", allSeatsNum=" + allSeatsNum +
+                ", departureAirport='" + departureAirport + '\'' +
+                ", destinationAirport='" + destinationAirport + '\'' +
+                ", departureTime='" + departureTime + '\'' +
+                '}';
     }
 }
