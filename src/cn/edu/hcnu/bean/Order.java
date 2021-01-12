@@ -1,3 +1,5 @@
+package cn.edu.hcnu.bean;
+
 import java.util.Set;
 
 public class Order {//乘客订单信息
@@ -10,6 +12,7 @@ public class Order {//乘客订单信息
     private float yhq;//优惠券
     private float hszj;//含税总价
     private Set<Customer> customerSet;//乘客人数
+    private Flight flight;//
 
     public String getId() {
         return id;
@@ -82,4 +85,5 @@ public class Order {//乘客订单信息
     public void setCustomerSet(Set<Customer> customerSet) {
         this.customerSet = customerSet;
     }
+
 }

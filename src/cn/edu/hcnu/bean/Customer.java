@@ -1,4 +1,7 @@
+package cn.edu.hcnu.bean;
+
 import java.util.Date;
+import java.util.Set;
 
 public class Customer {//订票人或者乘客
     private String id;
@@ -6,6 +9,7 @@ public class Customer {//订票人或者乘客
     private String customerType;//乘客类型： 成人、儿童、婴儿
     private String phoen;//订票人电话
     private String cardId;//订票人身份证号
+    private Set<Order> SetOrder;//乘客订单
     private Date birthDate;//乘客出生日期
 
     public String getId() {
@@ -46,5 +50,21 @@ public class Customer {//订票人或者乘客
 
     public void setCardId(String cardId) {
         this.cardId = cardId;
+    }
+
+    public Set<Order> getSetOrder() {
+        return SetOrder;
+    }
+
+    public void setSetOrder(Set<Order> setOrder) {
+        SetOrder = setOrder;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 }
