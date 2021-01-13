@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.Set;
 
 public class FlightDaoIml implements IFlightDao {//航班接口实现类
@@ -32,6 +33,7 @@ public class FlightDaoIml implements IFlightDao {//航班接口实现类
 
     @Override
     public Set<Flight> getAllFlights() {
+        Set<Flight> allFlights = new HashSet<>();
         return null;
     }
 
