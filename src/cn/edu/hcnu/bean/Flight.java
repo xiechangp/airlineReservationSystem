@@ -81,12 +81,12 @@ public class Flight {//航班
     @Override
     public String toString() {
         return "Flight{" +
-                "flightID='" + flightID + '\'' +
-                ", planeType='" + planeType + '\'' +
-                ", allSeatsNum=" + allSeatsNum +
-                ", departureAirport='" + departureAirport + '\'' +
-                ", destinationAirport='" + destinationAirport + '\'' +
-                ", departureTime='" + departureTime + '\'' +
+                "航班ID：" + flightID + '\'' +
+                ", 飞机的类型：" + planeType + '\'' +
+                ", 座位数：" + allSeatsNum +
+                ", 起飞地点：" + departureAirport + '\'' +
+                ", 到达地点：" + destinationAirport + '\'' +
+                ", 起飞时间：" + departureTime + '\'' +
                 '}';
     }
 }

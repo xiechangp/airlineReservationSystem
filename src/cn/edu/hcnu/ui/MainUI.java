@@ -6,6 +6,7 @@ import cn.edu.hcnu.bll.impl.FlightServeIml;
 
 import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,8 +23,8 @@ public class MainUI {
         System.out.println("按4、机票预约");
         System.out.println("按5、机票退订");
         System.out.println("按6、退出系统");
-        int s = scr.nextInt();
-            if(s==1) {
+        int choice = scr.nextInt();
+            if(choice==1) {
                 String id = UUID.randomUUID().toString().replace("-","");
                 System.out.print("航班ID:");
                 String flightID = scr.next();
@@ -62,6 +63,20 @@ public class MainUI {
                     }
                 }
                 // System.out.println(flight.toString());
+            } else if (choice==2) {
+                IFlightServe iFlightServe = new FlightServeIml();
+
+            //    Set<Flight> allFlights = null;
+                try {
+                    Set<Flight> allFlights = iFlightServe.getAllFlights();
+                    //Set的遍历需要用到迭代器
+                    for(Flight flight:allFlights) {
+                        System.out.println(flight);
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
             }
 
         }

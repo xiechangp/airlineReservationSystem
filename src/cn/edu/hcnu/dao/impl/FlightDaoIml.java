@@ -1,12 +1,11 @@
 package cn.edu.hcnu.dao.impl;
 
 import cn.edu.hcnu.bean.Flight;
+import cn.edu.hcnu.bll.IFlightServe;
+import cn.edu.hcnu.bll.impl.FlightServeIml;
 import cn.edu.hcnu.dao.IFlightDao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,9 +31,31 @@ public class FlightDaoIml implements IFlightDao {//航班接口实现类
     }
 
     @Override
-    public Set<Flight> getAllFlights() {
-        Set<Flight> allFlights = new HashSet<>();
-        return null;
+    public Set<Flight> getAllFlights() throws SQLException {
+        Set<Flight> allFlights = new HashSet<>();//容器
+
+        String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+        String username = "xcp";
+        String password = "xcp123";
+        Connection conn = DriverManager.getConnection(url, username, password);
+        String sql = "SELECT * FROM flight";
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        ResultSet rs = pstmt.executeQuery();
+        while(rs.next()) {
+           String id = rs.getString("ID");
+           String flightID = rs.getString("FLIGHT_ID");
+           String planeType = rs.getString("PLANE_TYPE");
+           int allSeatsNum = rs.getInt("TOTAL_SEATS_NUM");
+           String departureAirport = rs.getString("DEPARTURE_AIRPORT");
+           String destinationAirport = rs.getString("DESTINATION_AIRPORT");
+           String departureTime = rs.getString("DEPARTURE_TIME");
+
+            Flight flight = new Flight(id,flightID,planeType,allSeatsNum,departureAirport,destinationAirport,departureTime);
+            allFlights.add(flight);
+
+        }
+        return allFlights;
     }
 
     @Override
