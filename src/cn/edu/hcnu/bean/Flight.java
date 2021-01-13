@@ -12,7 +12,8 @@ public class Flight {//航班
     private String departureTime;//起飞时间
    // private String detinationTime;//达到时间
 
-    public Flight(String flightID, String planeType, int allSeatsNum, String departureAirport, String destinationAirport, String departureTime) {
+    public Flight(String id,String flightID, String planeType, int allSeatsNum, String departureAirport, String destinationAirport, String departureTime) {
+        this.id = id;
         this.flightID = flightID;
         this.planeType = planeType;
         this.allSeatsNum = allSeatsNum;
