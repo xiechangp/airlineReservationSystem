@@ -12,7 +12,16 @@ public class Flight {//航班
     private String departureTime;//起飞时间
    // private String detinationTime;//达到时间
 
-    public Flight(String id,String flightID, String planeType, int allSeatsNum, String departureAirport, String destinationAirport, String departureTime) {
+    public Flight(String flightID, String planeType, int allSeatsNum, String departureAirport, String destinationAirport, String departureTime) {
+        this.flightID = flightID;
+        this.planeType = planeType;
+        this.allSeatsNum = allSeatsNum;
+        this.departureAirport = departureAirport;
+        this.destinationAirport = destinationAirport;
+        this.departureTime = departureTime;
+    }
+
+    public Flight(String id, String flightID, String planeType, int allSeatsNum, String departureAirport, String destinationAirport, String departureTime) {
         this.id = id;
         this.flightID = flightID;
         this.planeType = planeType;
@@ -80,13 +89,12 @@ public class Flight {//航班
 
     @Override
     public String toString() {
-        return "Flight{" +
-                "航班ID：" + flightID + '\'' +
-                ", 飞机的类型：" + planeType + '\'' +
+        return "航班信息：" +
+                "航班ID：" + flightID +
+                ", 飞机的类型：" + planeType +
                 ", 座位数：" + allSeatsNum +
-                ", 起飞地点：" + departureAirport + '\'' +
-                ", 到达地点：" + destinationAirport + '\'' +
-                ", 起飞时间：" + departureTime + '\'' +
-                '}';
+                ", 起飞地点：" + departureAirport +
+                ", 到达地点：" + destinationAirport +
+                ", 起飞时间：" + departureTime ;
     }
 }
