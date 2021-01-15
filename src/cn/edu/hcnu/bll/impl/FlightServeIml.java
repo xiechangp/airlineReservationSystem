@@ -31,18 +31,18 @@ public class FlightServeIml implements IFlightServe {
     }
 
     @Override
-    public Flight getFlightByDepartureTime(String departureTime) {
-        return null;
+    public Flight getFlightByDepartureTime(String departureTime) throws SQLException {
+        return iFlightDao.getFlightByDepartureTime(departureTime);
     }
 
     @Override
-    public Flight getFlightByDepartureAirport(String departureAirport) {
-        return null;
+    public Flight getFlightByDepartureAirport(String departureAirport) throws SQLException {
+        return iFlightDao.getFlightByDepartureAirport(departureAirport);
     }
 
     @Override
-    public Flight getFlightByDestinationAirport(String destinationAirport) {
-        return null;
+    public Flight getFlightByDestinationAirport(String destinationAirport) throws SQLException {
+        return iFlightDao.getFlightByDestinationAirport(destinationAirport);
     }
 
     @Override

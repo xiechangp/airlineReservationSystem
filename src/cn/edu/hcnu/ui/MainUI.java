@@ -77,6 +77,60 @@ public class MainUI {
                     e.printStackTrace();
                 }
 
+            } else if (choice==3) {
+                System.out.println("请您输入相应的数字进行查询:");
+                System.out.println("按1、查询航班空座位");
+                System.out.println("按2、查询起飞时间");
+                System.out.println("按3、查询起飞机场");
+                System.out.println("按4、查询到达机场");
+                int choose = scr.nextInt();
+
+                if(choose==1) {
+
+                } else if (choose==2) {
+                    System.out.print("请您输入起飞时间：");
+                    String departureTime = scr.next();
+                    IFlightServe iFlightServe = new FlightServeIml();
+                    try {
+                        Flight flight = iFlightServe.getFlightByDepartureTime(departureTime);
+                        if(flight != null) {
+                            System.out.println("您的查询结果是:"+flight);
+                        }else {
+                            System.out.println("没有你要查询的航班时间");
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+                } else if (choose==3) {
+                    System.out.print("请您输入起飞地点：");
+                    String departureAirport = scr.next();
+                    IFlightServe iFlightServe = new FlightServeIml();
+                    try {
+                        Flight flight = iFlightServe.getFlightByDepartureAirport(departureAirport);
+                        if(flight != null) {
+                            System.out.println("您的查询结果是:"+flight);
+                        }else {
+                            System.out.println("没有你要查询的航班时间");
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                } else if (choose==4) {//destinationAirport
+                    System.out.print("请您输入到达地点：");
+                    String destinationAirport = scr.next();
+                    IFlightServe iFlightServe = new FlightServeIml();
+                    try {
+                        Flight flight = iFlightServe.getFlightByDestinationAirport(destinationAirport);
+                        if(flight != null) {
+                            System.out.println("您的查询结果是:"+flight);
+                        }else {
+                            System.out.println("没有你要查询的航班时间");
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
 
         }

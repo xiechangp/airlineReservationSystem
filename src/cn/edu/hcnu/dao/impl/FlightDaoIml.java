@@ -38,12 +38,12 @@ public class FlightDaoIml implements IFlightDao {//航班接口实现类
         String username = "xcp";
         String password = "xcp123";
         Connection conn = DriverManager.getConnection(url, username, password);
-        String sql = "SELECT * FROM flight";
+        String sql = "SELECT FLIGHT_ID,PLANE_TYPE,TOTAL_SEATS_NUM,DEPARTURE_AIRPORT,DESTINATION_AIRPORT,DEPARTURE_TIME FROM flight";
 
         PreparedStatement pstmt = conn.prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery();
         while(rs.next()) {
-           String id = rs.getString("ID");
+          // String id = rs.getString("ID");
            String flightID = rs.getString("FLIGHT_ID");
            String planeType = rs.getString("PLANE_TYPE");
            int allSeatsNum = rs.getInt("TOTAL_SEATS_NUM");
@@ -51,7 +51,7 @@ public class FlightDaoIml implements IFlightDao {//航班接口实现类
            String destinationAirport = rs.getString("DESTINATION_AIRPORT");
            String departureTime = rs.getString("DEPARTURE_TIME");
 
-            Flight flight = new Flight(id,flightID,planeType,allSeatsNum,departureAirport,destinationAirport,departureTime);
+            Flight flight = new Flight(flightID,planeType,allSeatsNum,departureAirport,destinationAirport,departureTime);
             allFlights.add(flight);
 
         }
@@ -59,18 +59,88 @@ public class FlightDaoIml implements IFlightDao {//航班接口实现类
     }
 
     @Override
-    public Flight getFlightByDepartureTime(String departureTime) {
-        return null;
+    public Flight getFlightByDepartureTime(String departureTime) throws SQLException {
+        String sql = "SELECT FLIGHT_ID,PLANE_TYPE,\n" +
+                "TOTAL_SEATS_NUM,DEPARTURE_AIRPORT,\n" +
+                "DESTINATION_AIRPORT,DEPARTURE_TIME FROM flight \n" +
+                "WHERE DEPARTURE_TIME=?";
+        String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+        String username = "xcp";
+        String password = "xcp123";
+        Connection conn = DriverManager.getConnection(url, username, password);
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1,departureTime);
+        ResultSet rs = pstmt.executeQuery();
+
+        Flight flight = null;
+        while (rs.next()) {
+            String flightID = rs.getString("FLIGHT_ID");
+            String planeType = rs.getString("PLANE_TYPE");
+            int allSeatsNum = rs.getInt("TOTAL_SEATS_NUM");
+            String departureAirport = rs.getString("DEPARTURE_AIRPORT");
+            String destinationAirport = rs.getString("DESTINATION_AIRPORT");
+            String departureTimee = rs.getString("DEPARTURE_TIME");
+             flight = new Flight(flightID,planeType,allSeatsNum,departureAirport,destinationAirport,departureTimee);
+        }
+        return flight;
     }
 
     @Override
-    public Flight getFlightByDepartureAirport(String departureAirport) {
-        return null;
+    public Flight getFlightByDepartureAirport(String departureAirport) throws SQLException {
+
+        String sql = "SELECT FLIGHT_ID,PLANE_TYPE,\n" +
+                "TOTAL_SEATS_NUM,DEPARTURE_AIRPORT,\n" +
+                "DESTINATION_AIRPORT,DEPARTURE_TIME FROM flight \n" +
+                "WHERE DEPARTURE_AIRPORT=?";
+        String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+        String username = "xcp";
+        String password = "xcp123";
+        Connection conn = DriverManager.getConnection(url, username, password);
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1,departureAirport);
+        ResultSet rs = pstmt.executeQuery();
+
+        Flight flight = null;
+        while (rs.next()) {
+            String flightID = rs.getString("FLIGHT_ID");
+            String planeType = rs.getString("PLANE_TYPE");
+            int allSeatsNum = rs.getInt("TOTAL_SEATS_NUM");
+            String departureAirportt = rs.getString("DEPARTURE_AIRPORT");
+            String destinationAirport = rs.getString("DESTINATION_AIRPORT");
+            String departureTimee = rs.getString("DEPARTURE_TIME");
+            flight = new Flight(flightID,planeType,allSeatsNum,departureAirportt,destinationAirport,departureTimee);
+        }
+        return flight;
     }
 
     @Override
-    public Flight getFlightByDestinationAirport(String destinationAirport) {
-        return null;
+    public Flight getFlightByDestinationAirport(String destinationAirport) throws SQLException {
+        String sql = "SELECT FLIGHT_ID,PLANE_TYPE,\n" +
+                "TOTAL_SEATS_NUM,DEPARTURE_AIRPORT,\n" +
+                "DESTINATION_AIRPORT,DEPARTURE_TIME FROM flight \n" +
+                "WHERE DESTINATION_AIRPORT=?";
+        String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+        String username = "xcp";
+        String password = "xcp123";
+        Connection conn = DriverManager.getConnection(url, username, password);
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1,destinationAirport);
+        ResultSet rs = pstmt.executeQuery();
+
+        Flight flight = null;
+        while (rs.next()) {
+            String flightID = rs.getString("FLIGHT_ID");
+            String planeType = rs.getString("PLANE_TYPE");
+            int allSeatsNum = rs.getInt("TOTAL_SEATS_NUM");
+            String departureAirportt = rs.getString("DEPARTURE_AIRPORT");
+            String destinationAirportt = rs.getString("DESTINATION_AIRPORT");
+            String departureTimee = rs.getString("DEPARTURE_TIME");
+            flight = new Flight(flightID,planeType,allSeatsNum,departureAirportt,destinationAirportt,departureTimee);
+        }
+        return flight;
     }
 
     @Override
